@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title>IDPs from Mali</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+  <!-- loading font -->
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,600,700' rel='stylesheet' type='text/css'>
+
+  <!-- Loading jquery -->
+  <script src='http/js/jquery.js'></script>
+
+  <!-- Load Leaflet -->
+  <link rel="stylesheet" href="http/css/leaflet.css" />
+  <script src="http/js/leaflet.js"></script>
+
+  <!-- Loading Mapbox, used for the popup -->
+  <!-- <script src='js/mapbox.js'></script> -->
+  <!-- <link href='http/css/mapbox.css' rel='stylesheet' /> -->
+
+  <!-- Loading c3 + d3 -->
+  <script src='http/js/d3.min.js'></script>
+  <script src='http/js/c3.js'></script>
+  <link href='http/css/c3.css' rel='stylesheet' />
+
+  <!-- Loading style sheets that match our current site -->
+  <link rel='stylesheet' id='bean-css'  href='http/css/framework.css' type='text/css' media='all' />
+  <link rel='stylesheet' id='main-style-css'  href='http/css/style.css' type='text/css' media='all' />
+  <link rel='stylesheet' id='mobile-css'  href='http/css/mobile.css' type='text/css' media='all' />
+  <link rel='stylesheet' id='font-awesome-four-css'  href='http/css/font-awesome.min.css' type='text/css' media='all' />
+  <link rel='stylesheet' href='http/css/mali-page.css' type='text/css' media='all' />
+
+
+  <style>
+    body {
+      font-family: 'Source Sans Pro';
+      margin-top:20px;
+      width: 100%;
+    }
+
+    /* footnote style */
+    .footnote {
+      font-size: 12px;
+      line-height: 13px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+    .footnote strong {
+      color: #808080;
+    }
+
+    /* Map specific styles */
+    #map {
+      position:absolute;
+      z-index: -1;
+      height: 100%;
+      width:100%;
+    }
+
+    /* Overlay for the box */
+    .overlay {
+      z-index: 1;
+      position: relative;
+      display: ;
+      float: right;
+      padding-right: 5%;
+    }
+    .floaty {
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 25px;
+      padding-bottom: 40px;
+      /* box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3); */
+    }
+    /* try to fix the distance between the cursor and */
+    /* the map. they are on top of each other now. */
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+      background-color: #404040;
+      color: #fff;
+      box-shadow: none;
+      max-width: 200px;
+      /* margin-bottom: 20px; */
+    }
+    /* very ugly hack to get rid of the attribution */
+    /* this is NOT a solution, it should be fixed */
+    /* as soon as possible */
+    #map > div.leaflet-control-container > div.leaflet-bottom.leaflet-right {
+      font-size: 0px;
+    }
+
+    /* timeseries specific style */
+    #timeseries {
+      padding-top: 30px;
+    }
+    #timeseries .c3-line {
+      stroke-width: 2px;
+    }
+    #timeseries .c3-line-Average {
+      stroke-width: 3px;
+    }
+    #timeseries .c3-legend-item {
+      font-size: 11px;
+    }
+
+    /* style for regions */
+    .c3-region.negotiations {
+      fill: #0078A8;
+    }
+
+    /* Map legend styles */
+    #map > div.overlay > div > div.seven.columns.floaty > div.map-legend > div:nth-child(2) {
+      padding: 0 0 0 0;
+      width: 10%;
+    }
+    .map-legend p {
+      font: 12px/10px "Source Sans Pro", Helvetica, Arial, sans-serif
+    }
+    .map-legend .legend-box {
+       width: 10px;
+       height: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+<div>
+
+  <!-- Custom basemap styles -->
+  <!-- <div id="crisis-map-url-div" style="display: none;">https://{s}.tiles.mapbox.com/v3/reliefweb.im6jg6a0/{z}/{x}/{y}.png</div> -->
+
+  <div id="crisis-map-url-div" style="display: none;">http://{s}.tile.osm.org/{z}/{x}/{y}.png</div>
+
+  <div id="mali-map">
+  </div>
+</div>
+
+<script src="http/js/data.js"></script>
+<script src="http/js/idp_map.js"></script>
+<script>
+version = '0.1'
+console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+console.log('hdxviz-mli-map')
+console.log('Developed by @luiscape + @DitaA')
+console.log('Version: v.' + version)
+console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+</script>
+
+
+</body>
+</html>
