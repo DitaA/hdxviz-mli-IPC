@@ -63,6 +63,15 @@ $(document).ready(function() {
 // }
 
 function drawDistricts(map){
+<<<<<<< HEAD
+  var color = ["#e0efdd", "#FEE508", "#E77A24", "#CE1F26", "#680F13"];
+
+  var layers = {
+    IPCClass: {
+      name: 'Mali Food Security',
+      threshold: [ 1, 2, 3, 4, 5],
+      values: IPCClass
+=======
   var color = ["none","#ffe082", "#ffbd13", "#ff8053", "#ff493d"];
 
   var layers = {
@@ -70,6 +79,7 @@ function drawDistricts(map){
       name: 'Number of IDPs per 100,000 inhabitants in 2013',
       threshold: [1, 50, 100, 500],
       values: totalIDPs
+>>>>>>> e8ecd53e5847fa92c3c53f484130a4fa62cee532
     }
     // totalCases: {
     //   name: 'Cumulative Cases of Ebola',
@@ -100,16 +110,28 @@ function drawDistricts(map){
 
   function getStyle(values, threshold){
     function internalGetColor(color, i){
+<<<<<<< HEAD
+      return {color: color[i], fillColor: color[i], fillOpacity: 0.6, opacity: 0.7, weight: 0.9};
+=======
       return {color: color[i], fillColor: color[i], fillOpacity: 0.6, opacity: 0.7, weight: 2};
+>>>>>>> e8ecd53e5847fa92c3c53f484130a4fa62cee532
     }
     return function (feature){
       var pcoderef = feature.properties.Pcode;
       if(pcoderef in values) {
+<<<<<<< HEAD
+        for (var i = 0; i < 5; i++){
+          if (values[pcoderef] < threshold[i])
+            return internalGetColor(color, i-1);
+        }
+        return internalGetColor(color, 5);
+=======
         for (var i = 0; i < 4; i++){
           if (values[pcoderef] < threshold[i])
             return internalGetColor(color, i);
         }
         return internalGetColor(color, 4);
+>>>>>>> e8ecd53e5847fa92c3c53f484130a4fa62cee532
       } else {
           return {"color": "none","opacity":1};
       }
@@ -245,14 +267,45 @@ function drawDistricts(map){
     return this._div;
   };
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> e8ecd53e5847fa92c3c53f484130a4fa62cee532
   // method that we will use to update the control based on feature properties passed
   info.update = function (props) {
     this._div.innerHTML = '<h4>' + layers[this._layer]['name'] + '</h4>' +  (props ?
       '<table>' +
+<<<<<<< HEAD
+      '<tr><td style="text-align: left;">Region: </td><td>&nbsp;&nbsp; <b>' + props.CERCLE_NAM + '</b><td></tr>' +
+      '<tr><td style="text-align: left;">District: </td><td>&nbsp;&nbsp; <b>' + props.REGION__NA + '</b><td></tr>' +
+      '<tr><td style="text-align: left;">IPC Class: </td><td>&nbsp;&nbsp; <b>' + layers[this._layer]['values'][props.Pcode] + '</b><td></tr>' +
+      '</table>' +
+      '<h6>Affected population: </h6>' +
+      '<table>' +
+      '<tr>' +
+        '<td valign="middle" style="padding-top: 3px"><div class="progress"><div class="progress-bar" style="width:' + Ph1Percent[props.Pcode] + '%;"></div></div>' + '</td>' +
+        '<td valign="top" style="text-align: left; padding-left: 5px; color: #e0efdd">' + Ph1Percent[props.Pcode] + '%' + '<background="red">' + ' Minimal' + '</color>' + '</b></td>' +
+      '</tr><tr>' +
+        '<td valign="middle"  style="padding-top: 3px"><div class="progress"><div class="progress-bar progress-bar-ph2" style="width:' + Ph2[props.Pcode] + '%;"></div></div>' + '</td>' +
+        '<td valign="top" style="text-align: left; padding-left: 5px; color: #FEE508">' + Ph2[props.Pcode] + '%' + ' Stressed' + '</b></td>' +
+      '</tr><tr>'+
+        '<td valign="middle" style="padding-top: 3px"><div class="progress"><div class="progress-bar progress-bar-ph3" style="width:' + Ph3[props.Pcode] + '%;"></div></div>' + '</td>' +
+        '<td valign="top" style="text-align: left; padding-left: 5px; color: #E77A24">' + Ph3[props.Pcode] + '%' + ' Crisis' + '</b></td>' +
+      '</tr>' +
+      '</table>'
+      // '<tr><td style="text-align: left;">' + 
+      // '<div class="progress"><div class="progress-bar" style="width:' + Ph1Percent[props.Pcode] + '%;"></div></div>' + '</td>' +
+      // '<td style="text-align: left;">' + Ph1Percent[props.Pcode] + '%' + ' Minimal' + '</b></td></tr>' +
+      // '<div class="progress"><div class="progress-bar progress-bar-ph2" style="width:' + Ph2[props.Pcode] + '%;"></div></div>' + '</td>' +
+      // '<td style="text-align: left;">' + Ph2[props.Pcode] + '%' + ' Crisis' + '</b></td></tr>' +
+      // '<div class="progress"><div class="progress-bar progress-bar-ph3" style="width:' + Ph3[props.Pcode] + '%;"></div></div>' + '</td>' +
+      // '<td style="text-align: left;">' + Ph3[props.Pcode] + '%' + ' Stressed' + '</b></td></tr>' 
+=======
       '<tr><td style="text-align: right;">Country: </td><td>&nbsp;&nbsp; <b>' + props.CERCLE_NAM + '</b><td></tr>' +
       '<tr><td style="text-align: right;">District: </td><td>&nbsp;&nbsp; <b>' + props.REGION__NA + '</b><td></tr>' +
       '<tr><td style="text-align: right;">Value: </td><td>&nbsp;&nbsp; <b>' + layers[this._layer]['values'][props.Pcode] + '</b><td></tr>' +
       '</table>'
+>>>>>>> e8ecd53e5847fa92c3c53f484130a4fa62cee532
       : 'Hover over a country/district');
   };
   info.showOtherMessage = function (message){
@@ -271,7 +324,11 @@ function drawDistricts(map){
 
   info.addTo(map);
 
+<<<<<<< HEAD
+  var legend = L.control({position: 'bottomright'});
+=======
   var legend = L.control({position: 'bottomleft'});
+>>>>>>> e8ecd53e5847fa92c3c53f484130a4fa62cee532
 
   legend.onAdd = function (map) {
     this._div = L.DomUtil.create('div', 'map-info legend');
@@ -280,6 +337,17 @@ function drawDistricts(map){
   legend.update = function (){
     var threshold = layers[this._layer]['threshold'];
 
+<<<<<<< HEAD
+ for (var i = 1; i < threshold.length; i++) {
+    this._div.innerHTML = '<div><i style="background: #e0efdd"></i> ' + threshold[0] + '</div>';}
+     for (var i = 1; i < threshold.length; i++) {
+       this._div.innerHTML +=
+         '<div><i style="background:' + color[i] + '"></i> ' +
+         threshold[i] + '</div>';
+     }
+  }; 
+
+=======
     this._div.innerHTML = '<div><i style="background: white"></i> 0&ndash;' + threshold[0] + '</div>';
     for (var i = 0; i < threshold.length; i++) {
       this._div.innerHTML +=
@@ -287,6 +355,7 @@ function drawDistricts(map){
         threshold[i] + (threshold[i + 1] ? '&ndash;' + threshold[i + 1] + '</div>' : '+</div>');
     }
   };
+>>>>>>> e8ecd53e5847fa92c3c53f484130a4fa62cee532
   legend.updateLayer = function (layer){
     for (l in layers)
       if (layers[l]['name'] == layer){
@@ -309,7 +378,11 @@ function drawDistricts(map){
   });
 
 
+<<<<<<< HEAD
+  var defaultLayer = layers['IPCClass']['name'];
+=======
   var defaultLayer = layers['totalIDPs']['name'];
+>>>>>>> e8ecd53e5847fa92c3c53f484130a4fa62cee532
   map.addLayer(regularLayers[defaultLayer]);
   info.updateLayer(defaultLayer);
   legend.updateLayer(defaultLayer);

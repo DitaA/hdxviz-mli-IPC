@@ -106,6 +106,11 @@
     color: white;
     z-index: 0;
     position: relative;
+<<<<<<< HEAD
+    top: 10px;
+    right: 10px;
+=======
+>>>>>>> e8ecd53e5847fa92c3c53f484130a4fa62cee532
 }
 .map-info.legend i {
     width: 18px;
